@@ -2,31 +2,199 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日全球热点新闻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>每日全球热点新闻 - 2026年4月29日</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f0f23;color:#e2e8f0;padding:20px;max-width:800px;margin:0 auto;line-height:1.8}
-h1{text-align:center;font-size:24px;margin-bottom:6px;background:linear-gradient(135deg,#7c5cfc,#00d2ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.date{text-align:center;color:#94a3b8;font-size:14px;margin-bottom:24px}
-.section{margin-bottom:24px}
-.section h2{font-size:18px;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,0.1);color:#7c5cfc}
-.news-item{padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
-.news-item h3{font-size:15px;margin-bottom:4px}
-.news-item p{font-size:13px;color:#94a3b8}
-.placeholder{text-align:center;padding:60px 20px;color:#64748b}
-.placeholder span{font-size:48px;display:block;margin-bottom:16px}
+body{background:#0f0f23;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.7;padding:0;min-height:100vh}
+.header{background:linear-gradient(135deg,#1a1a3e 0%,#0f0f23 50%,#1a1a3e 100%);padding:28px 20px 22px;text-align:center;border-bottom:1px solid #2a2a4a;position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.header h1{font-size:1.5em;background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;font-weight:700}
+.header .date{font-size:.85em;color:#94a3b8;letter-spacing:1px}
+.container{max-width:720px;margin:0 auto;padding:12px 16px 40px}
+.section{margin-bottom:28px}
+.section-title{display:flex;align-items:center;gap:8px;font-size:1.15em;font-weight:700;padding:14px 16px;background:linear-gradient(135deg,#1e1e3f,#16162e);border-radius:12px;border-left:3px solid;margin-bottom:12px}
+.section-title .icon{font-size:1.2em}
+.section-world .section-title{border-color:#f472b6;color:#f9a8d4}
+.section-economy .section-title{border-color:#60a5fa;color:#93c5fd}
+.section-tech .section-title{border-color:#a78bfa;color:#c4b5fd}
+.section-society .section-title{border-color:#34d399;color:#6ee7b7}
+.section-china .section-title{border-color:#fbbf24;color:#fcd34d}
+.card{background:#16162e;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:1px solid #1e1e3f;transition:transform .2s,border-color .2s}
+.card:active{transform:scale(.99);border-color:#3a3a5f}
+.card.hot{border-left:3px solid #ef4444}
+.card.hot::before{content:"🔥";margin-right:6px}
+.card h3{font-size:.95em;font-weight:600;margin-bottom:5px;color:#f1f5f9;line-height:1.5}
+.card p{font-size:.83em;color:#94a3b8;line-height:1.65}
+.tag{display:inline-block;font-size:.7em;padding:2px 8px;border-radius:20px;margin-right:5px;font-weight:500}
+.tag-red{background:rgba(239,68,68,.15);color:#fca5a5}
+.tag-blue{background:rgba(96,165,250,.15);color:#93c5fd}
+.tag-purple{background:rgba(167,139,250,.15);color:#c4b5fd}
+.tag-green{background:rgba(52,211,153,.15);color:#6ee7b7}
+.tag-yellow{background:rgba(251,191,36,.15);color:#fcd34d}
+.tag-pink{background:rgba(244,114,182,.15);color:#f9a8d4}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#2a2a4a,transparent);margin:20px 0}
+.footer{text-align:center;padding:20px;font-size:.75em;color:#475569;border-top:1px solid #1e1e3f;margin-top:20px}
+.section .card:last-child{margin-bottom:0}
+@media(min-width:480px){.header h1{font-size:1.8em}.container{padding:20px 24px 50px}.card h3{font-size:1em}.card p{font-size:.88em}}
 </style>
 </head>
 <body>
-<h1>📰 每日全球热点新闻</h1>
-<p class="date" id="dateStr"></p>
-<div class="placeholder">
-<span>⏳</span>
-<p>新闻正在自动生成中…<br>每天 7:00 AM 自动更新</p>
+
+<div class="header">
+  <h1>📰 每日全球热点新闻</h1>
+  <div class="date">2026年4月29日 星期三</div>
 </div>
-<script>
-document.getElementById('dateStr').textContent = new Date().toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
-</script>
+
+<div class="container">
+
+<!-- 国际政治与外交 -->
+<div class="section section-world">
+  <div class="section-title"><span class="icon">🌍</span> 国际政治与外交</div>
+
+  <div class="card">
+    <h3>联合国大会主席贝尔伯克访华</h3>
+    <p>第80届联合国大会主席贝尔伯克将于4月29日至30日访华，正值中东局势紧张及美伊谈判僵持之际，中方将就全球治理议题交换意见。</p>
+  </div>
+
+  <div class="card">
+    <h3>日本首相高市早苗宣称"为长期战争做准备"</h3>
+    <p>高市早苗公开声称修订"安保三文件"是左右国家命运的重要工作，要推进应对"新型作战方式"及为"长期战争"做好准备。外交部回应：必须高度警惕。</p>
+  </div>
+
+  <div class="card">
+    <h3>美伊谈判僵局持续，中东局势紧张</h3>
+    <p>美伊围绕核权益和中东霸权的博弈持续升温。伊朗释放矛盾信号，美国军事威慑加码，双方陷入"谈不拢就打、打不拢再谈"的双线死局。</p>
+  </div>
+
+  <div class="card">
+    <h3>以色列-黎巴嫩冲突升级</h3>
+    <p>内塔尼亚胡表示以军拥有充分行动自由打击黎巴嫩真主党目标。英国海事机构通报，近两月霍尔木兹海峡等海域发生38起安全事件。</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 全球经济与市场 -->
+<div class="section section-economy">
+  <div class="section-title"><span class="icon">💰</span> 全球经济与市场</div>
+
+  <div class="card hot">
+    <h3>阿联酋宣布退出欧佩克及"欧佩克+"</h3>
+    <p>阿联酋4月28日宣布自5月1日起退出石油输出国组织及"欧佩克+"机制。此举将严重削弱欧佩克凝聚力及沙特在全球石油市场的影响力，全球能源格局面临重塑。</p>
+  </div>
+
+  <div class="card">
+    <h3>中共中央政治局召开会议部署经济工作</h3>
+    <p>会议深入挖掘内需潜力，要求有序化解地方政府债务风险，着力解决拖欠企业账款问题。会议肯定了今年以来政策靠前发力的成效。</p>
+  </div>
+
+  <div class="card">
+    <h3>英伟达创历史新高，芯片指数终结18日连涨</h3>
+    <p>费城半导体指数终结创纪录的18日连涨，AMD跌近4%，但英伟达涨4%再创历史新高。"大空头"伯里做空半导体板块引发关注。</p>
+  </div>
+
+  <div class="card">
+    <h3>OpenAI联手高通开发手机芯片</h3>
+    <p>报道称OpenAI与高通合作开发智能手机芯片，苹果股价承压跌超1%。SpaceX拟600亿美元收购AI编程软件Cursor。</p>
+  </div>
+
+  <div class="card">
+    <h3>油价逼近100美元/桶，全球通胀压力犹存</h3>
+    <p>霍尔木兹海峡局势紧张推升原油供应担忧，国际油价持续上行，叠加美联储降息预期降温，全球通胀压力不减。</p>
+  </div>
+
+  <div class="card">
+    <h3>IMF发布4月《世界经济展望》</h3>
+    <p>预测2026年全球通胀将小幅上升，新兴市场增速放缓和通胀上升问题尤为明显，冲突延续及贸易保护主义构成主要下行风险。</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 科技与创新 -->
+<div class="section section-tech">
+  <div class="section-title"><span class="icon">🔬</span> 科技与创新</div>
+
+  <div class="card hot">
+    <h3>GPT-6正式发布，OpenAI豪赌新架构</h3>
+    <p>采用全新Symphony双系统推理架构，将快速响应引擎和深度推理引擎整合到同一模型中，实现快速回答与深度思考兼顾，被视为AI能力的新里程碑。</p>
+  </div>
+
+  <div class="card">
+    <h3>OpenAI发布GPT-Image-2图像生成模型</h3>
+    <p>首个具备推理能力的图像生成模型，在Arena评测榜单中综合表现第一，可进行联网搜索和输出自检。</p>
+  </div>
+
+  <div class="card">
+    <h3>斯坦福发布2026年AI指数报告</h3>
+    <p>系统梳理全球AI发展态势，大模型竞争格局加速演进，报告为理解AI产业趋势提供权威参考。</p>
+  </div>
+
+  <div class="card">
+    <h3>广东省举办人工智能应用对接大会</h3>
+    <p>4月27日深圳大会集中发布华为昇腾系列、腾讯智能体等产品，覆盖AI+制造、政务、医疗、教育等十多个行业23个典型案例。</p>
+  </div>
+
+  <div class="card">
+    <h3>欧盟监管新规：谷歌须向第三方AI开放数据</h3>
+    <p>欧盟要求谷歌以公平条件向第三方搜索引擎开放搜索数据，AI聊天机器人被纳入受益范围。</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 社会与文化 -->
+<div class="section section-society">
+  <div class="section-title"><span class="icon">🏛</span> 社会与文化</div>
+
+  <div class="card">
+    <h3>长沙籍画家蔡皋获国际安徒生奖插画家奖</h3>
+    <p>80岁的长沙籍绘本画家蔡皋获得2026年国际安徒生奖插画家奖，成为首位斩获该奖项的中国插画师。</p>
+  </div>
+
+  <div class="card">
+    <h3>我国自5月1日起对所有非洲建交国实施零关税</h3>
+    <p>进一步深化中非经贸合作，拓宽非洲商品进入中国市场渠道。</p>
+  </div>
+
+  <div class="card">
+    <h3>江淮江南等地有强降雨和强对流天气</h3>
+    <p>预计4月28日至29日，江淮、江汉及江南、华南等地有强降雨和强对流天气，西北地区多大风沙尘天气。</p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- 中国国内重要新闻 -->
+<div class="section section-china">
+  <div class="section-title"><span class="icon">🇨🇳</span> 中国国内重要新闻</div>
+
+  <div class="card">
+    <h3>企业国有资产法迎来首次修订</h3>
+    <p>修订草案4月27日提请全国人大常委会审议，这是该法自2009年施行以来的首次修订，进一步完善企业国有资产管理监督制度。</p>
+  </div>
+
+  <div class="card">
+    <h3>国家能源局：完善绿电直连促进算电协同</h3>
+    <p>将完善绿电直连等促进算电协同政策举措，预计2026年相关措施加速落地。</p>
+  </div>
+
+  <div class="card">
+    <h3>证监会严打严防上市公司财务造假</h3>
+    <p>证监会部署专项行动严打财务造假，沪深北交易所同步修订交易规则。</p>
+  </div>
+
+  <div class="card">
+    <h3>最高法发布知识产权司法保护实施方案</h3>
+    <p>发布2026-2030年知识产权司法保护实施方案及惩罚性赔偿司法解释，加大知识产权保护力度。</p>
+  </div>
+</div>
+
+<div class="footer">
+  数据来源：新华社、央视新闻、外交部、华尔街见闻、财联社等<br>
+  自动生成 · WorkBuddy Daily News
+</div>
+
+</div>
 </body>
 </html>

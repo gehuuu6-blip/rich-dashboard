@@ -1,0 +1,89 @@
+{
+  "dashboard": {
+    "title": "Rich快乐小狗 · 智能工作台",
+    "subtitle": "HUALUMI EDUCATION · 花路米教育"
+  },
+  "stats": {
+    "active_projects": 5,
+    "team_members": 4,
+    "schedule_items": 9,
+    "pending_videos": 2,
+    "marketing_activities": 3
+  },
+  "projects": [
+    {
+      "name": "AI智慧教育综合体",
+      "description": "AI智能书法 + 课后晚托班 + 老带新营销 + 全国教师培训",
+      "status": "进行中",
+      "status_color": "green",
+      "lead": "曹博士 / 蔡校长"
+    },
+    {
+      "name": "新加坡留学项目",
+      "description": "LSBF / 格林威治 / 东伦敦大学",
+      "status": "招生中",
+      "status_color": "blue",
+      "lead": ""
+    },
+    {
+      "name": "澳洲留学",
+      "description": "筹备中",
+      "status": "筹备中",
+      "status_color": "orange",
+      "lead": ""
+    },
+    {
+      "name": "小红书运营",
+      "description": "视频上传与内容管理",
+      "status": "进行中",
+      "status_color": "green",
+      "lead": ""
+    },
+    {
+      "name": "健康生活",
+      "description": "内容待设计",
+      "status": "规划中",
+      "status_color": "gray",
+      "lead": ""
+    }
+  ],
+  "schedule": [
+    { "time": "06:30", "end": "07:30", "task": "Morning Routine 早晨仪式感", "completed": false },
+    { "time": "07:30", "end": "08:30", "task": "Deep Focus 深度专注", "completed": false },
+    { "time": "08:30", "end": "09:00", "task": "Review & Plan 复盘规划", "completed": false },
+    { "time": "09:00", "end": "10:30", "task": "核心工作1 Core Work", "completed": false },
+    { "time": "10:30", "end": "12:00", "task": "核心工作2 Core Work", "completed": false },
+    { "time": "12:00", "end": "13:30", "task": "Lunch & Rest 午餐休息", "completed": false },
+    { "time": "13:30", "end": "15:00", "task": "核心工作3 Core Work", "completed": false },
+    { "time": "15:00", "end": "17:00", "task": "Communication 沟通协作", "completed": false },
+    { "time": "17:00", "end": "21:30", "task": "Evening Growth 晚间成长", "completed": false }
+  ],
+  "todos": [
+    { "text": "完成AI书法课程方案设计", "urgent": true, "completed": false },
+    { "text": "联系新加坡留学合作方", "urgent": true, "completed": false },
+    { "text": "拍摄小红书宣传视频", "urgent": false, "completed": false },
+    { "text": "整理澳洲留学资料", "urgent": false, "completed": false }
+  ],
+  "team": [
+    { "name": "曹伟勋博士", "role": "AI · 硅谷", "contact": "" },
+    { "name": "蔡校长", "role": "书法 · 台湾", "contact": "" },
+    { "name": "Sandy", "role": "英文 · 台湾", "contact": "" },
+    { "name": "乔爱老师", "role": "晚托班资深老师", "contact": "13661736208" }
+  ],
+  "activities": [
+    { "text": "老带新营销活动", "status": "进行中" },
+    { "text": "AICDIO教师研修班", "status": "筹备中" },
+    { "text": "暑期AI夏令营", "status": "筹备中" }
+  ],
+  "ai_tools": [
+    "信息研究", "文档生成", "数据分析", "日程管理（关联 Google 日历）",
+    "邮件助手", "新闻摘要", "翻译工具", "图片生成",
+    "代码助手", "财务分析", "市场调研", "项目管理",
+    "知识库", "内容创作", "视频脚本", "学习助手"
+  ],
+  "recent_updates": [
+    { "date": "04-28", "text": "仪表盘 v2.0 完成，新增日程表 + 项目合并" },
+    { "date": "04-28", "text": "仪表盘部署到 GitHub Pages 永久上线" },
+    { "date": "04-27", "text": "每日新闻自动生成" }
+  ]
+}

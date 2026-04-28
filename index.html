@@ -33,6 +33,7 @@ body{background:var(--bg-primary);color:var(--text-primary);min-height:100vh;ove
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .time-display{font-size:13px;color:var(--text-secondary);text-align:right}
 .time-display .date{font-size:11px}
+.last-update{font-size:10px;color:var(--text-secondary);opacity:0.7}
 
 /* Stats Grid */
 .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:30px}
@@ -66,9 +67,12 @@ body{background:var(--bg-primary);color:var(--text-primary);min-height:100vh;ove
 
 /* Schedule */
 .schedule-list{display:flex;flex-direction:column;gap:4px}
-.schedule-item{display:flex;align-items:stretch;border-radius:10px;overflow:hidden;border:1px solid transparent;transition:all 0.3s;cursor:pointer}
+.schedule-item{display:flex;align-items:stretch;border-radius:10px;overflow:hidden;border:1px solid transparent;transition:all 0.3s;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
 .schedule-item:hover{border-color:rgba(124,92,252,0.3)}
 .schedule-item.active{border-color:var(--accent-purple);background:rgba(124,92,252,0.06)}
+.schedule-item.completed .schedule-body .schedule-info h4{text-decoration:line-through;opacity:0.5}
+.schedule-item.completed{background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.25)}
+.schedule-item.completed .schedule-time{background:rgba(16,185,129,0.12)}
 .schedule-time{width:110px;padding:10px 12px;background:var(--bg-secondary);display:flex;flex-direction:column;justify-content:center;flex-shrink:0;border-right:1px solid var(--border)}
 .schedule-time .time{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
 .schedule-time .duration{font-size:10px;color:var(--text-secondary)}
@@ -145,11 +149,10 @@ body{background:var(--bg-primary);color:var(--text-primary);min-height:100vh;ove
 .activity-content h4{font-size:12px;font-weight:600;margin-bottom:2px}
 .activity-content p{font-size:11px;color:var(--text-secondary)}
 
-/* Health placeholder */
-.health-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:200px;text-align:center;opacity:0.6}
-.health-placeholder i{font-size:48px;color:var(--accent-green);margin-bottom:12px}
-.health-placeholder h3{font-size:14px;font-weight:600;margin-bottom:4px}
-.health-placeholder p{font-size:12px;color:var(--text-secondary)}
+/* Loading */
+.loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg-primary);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:16px}
+.loading-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent-purple);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
 @media(max-width:768px){
 .stats-grid{grid-template-columns:repeat(2,1fr)}
@@ -163,21 +166,29 @@ body{background:var(--bg-primary);color:var(--text-primary);min-height:100vh;ove
 </style>
 </head>
 <body>
-<div class="dashboard">
+
+<!-- Loading -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div style="color:var(--text-secondary);font-size:13px">正在加载数据...</div>
+</div>
+
+<div class="dashboard" id="app" style="opacity:0;transition:opacity 0.5s">
 
 <!-- Header -->
 <div class="header">
   <div class="logo">
     <div class="logo-icon">🌸</div>
     <div class="logo-text">
-      <h1>Rich快乐小狗 · 智能工作台</h1>
-      <p>HUALUMI EDUCATION · SMART DASHBOARD</p>
+      <h1 id="dashTitle">Rich快乐小狗 · 智能工作台</h1>
+      <p id="dashSubtitle">HUALUMI EDUCATION · SMART DASHBOARD</p>
     </div>
   </div>
   <div class="header-right">
     <div class="time-display">
       <div id="currentTime" style="font-size:18px;font-weight:600;color:var(--text-primary)">--:--</div>
       <div id="currentDate" class="date">----年--月--日</div>
+      <div id="lastUpdate" class="last-update">数据加载中...</div>
     </div>
     <div class="status-badge status-online">
       <span class="status-dot"></span> AI 助手在线
@@ -186,33 +197,7 @@ body{background:var(--bg-primary);color:var(--text-primary);min-height:100vh;ove
 </div>
 
 <!-- Stats -->
-<div class="stats-grid">
-  <div class="stat-card">
-    <div class="stat-icon purple"><i class="ri-folder-3-line"></i></div>
-    <div class="stat-value">5</div>
-    <div class="stat-label">活跃项目</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon green"><i class="ri-team-line"></i></div>
-    <div class="stat-value">4</div>
-    <div class="stat-label">师资团队</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon orange"><i class="ri-calendar-check-line"></i></div>
-    <div class="stat-value" id="taskCount">9</div>
-    <div class="stat-label">日程事项</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon cyan"><i class="ri-video-line"></i></div>
-    <div class="stat-value">2</div>
-    <div class="stat-label">待上传视频</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-icon pink"><i class="ri-advertisement-line"></i></div>
-    <div class="stat-value">3</div>
-    <div class="stat-label">营销活动</div>
-  </div>
-</div>
+<div class="stats-grid" id="statsGrid"></div>
 
 <!-- Schedule + Projects + Tasks -->
 <div class="main-grid row-schedule">
@@ -221,234 +206,49 @@ body{background:var(--bg-primary);color:var(--text-primary);min-height:100vh;ove
   <div class="panel">
     <div class="panel-header">
       <div class="panel-title"><i class="ri-calendar-schedule-line"></i> 陛下每日执行蓝图</div>
-      <span class="panel-badge" id="scheduleProgress">0/9 已完成</span>
+      <span class="panel-badge" id="scheduleProgress">0/0 已完成</span>
     </div>
-    <div class="schedule-list">
-      <div class="schedule-item" onclick="toggleSchedule(this)">
-        <div class="schedule-time"><span class="time">06:30</span><span class="duration">1h</span></div>
-        <div class="schedule-body">
-          <div class="schedule-info"><h4>🙏 灵性与启智</h4><p>读经与祷告、多邻国打卡、洗漱整理</p></div>
-          <div class="schedule-icon icon-spirit"><i class="ri-sparkling-line"></i></div>
-        </div>
-      </div>
-      <div class="schedule-item" onclick="toggleSchedule(this)">
-        <div class="schedule-time"><span class="time">07:30</span><span class="duration">1h</span></div>
-        <div class="schedule-body">
-          <div class="schedule-info"><h4>👨‍👦 亲子时刻</h4><p>陪同儿子早餐、检查学校事务、送行</p></div>
-          <div class="schedule-icon icon-family"><i class="ri-heart-line"></i></div>
-        </div>
-      </div>
-      <div class="schedule-item" onclick="toggleSchedule(this)">
-        <div class="schedule-time"><span class="time">08:30</span><span class="duration">4h</span></div>
-        <div class="schedule-body">
-          <div class="schedule-info"><h4>🧠 深层专注</h4><p>AI Agent 开发、国际教育项目管理、内容创作</p></div>
-          <div class="schedule-icon icon-focus"><i class="ri-focus-3-line"></i></div>
-        </div>
-      </div>
-      <div class="schedule-item" onclick="toggleSchedule(this)">
-        <div class="schedule-time"><span class="time">12:30</span><span class="duration">1h</span></div>
-        <div class="schedule-body">
-          <div class="schedule-info"><h4>🥗 能量补给</h4><p>均衡营养午餐、短暂休息</p></div>
-          <div class="schedule-icon icon-lunch"><i class="ri-restaurant-line"></i></div>
-        </div>
-      </div>
-      <div class="schedule-item" onclick="toggleSchedule(this)">
-        <div class="schedule-time"><span class="time">13:30</span><span class="duration">3.5h</span></div>
-        <div class="schedule-body">
-          <div class="schedule-info"><h4>💼 运营与交付</h4><p>邮件处理、Recruitment 项目推进、营销材料更新</p></div>
-          <div class="schedule-icon icon-work"><i class="ri-briefcase-line"></i></div>
-        </div>
-      </div>
-      <div class="schedule-item" onclick="toggleSchedule(this)">
-        <div class="schedule-time"><span class="time">17:00</span><span class="duration">1.5h</span></div>
-        <div class="schedule-body">
-          <div class="schedule-info"><h4>💪 力量训练</h4><p>重量训练 / 体能训练</p></div>
-          <div class="schedule-icon icon-gym"><i class="ri-boxing-line"></i></div>
-        </div>
-      </div>
-      <div class="schedule-item" onclick="toggleSchedule(this)">
-        <div class="schedule-time"><span class="time">18:30</span><span class="duration">2h</span></div>
-        <div class="schedule-body">
-          <div class="schedule-info"><h4>🏠 家庭与成长</h4><p>亲子时间、陪同学习、家务整理</p></div>
-          <div class="schedule-icon icon-home"><i class="ri-home-heart-line"></i></div>
-        </div>
-      </div>
-      <div class="schedule-item" onclick="toggleSchedule(this)">
-        <div class="schedule-time"><span class="time">20:30</span><span class="duration">1h</span></div>
-        <div class="schedule-body">
-          <div class="schedule-info"><h4>📝 复盘与沉淀</h4><p>AI 工作流优化、明日计划同步、书法练习</p></div>
-          <div class="schedule-icon icon-review"><i class="ri-quill-pen-line"></i></div>
-        </div>
-      </div>
-      <div class="schedule-item" onclick="toggleSchedule(this)">
-        <div class="schedule-time"><span class="time">21:30</span><span class="duration">0.5h</span></div>
-        <div class="schedule-body">
-          <div class="schedule-info"><h4>🌙 断电休息</h4><p>冥想 / 睡眠准备、远离电子设备</p></div>
-          <div class="schedule-icon icon-sleep"><i class="ri-moon-line"></i></div>
-        </div>
-      </div>
-    </div>
+    <div class="schedule-list" id="scheduleList"></div>
   </div>
 
   <!-- Projects + Tasks -->
   <div style="display:flex;flex-direction:column;gap:20px">
-    <!-- Projects -->
     <div class="panel" style="flex:1">
       <div class="panel-header">
         <div class="panel-title"><i class="ri-rocket-2-line"></i> 项目看板</div>
-        <span class="panel-badge">5 个项目</span>
+        <span class="panel-badge" id="projectCount">0 个项目</span>
       </div>
-      <div class="project-list">
-        <div class="project-item">
-          <div class="project-left">
-            <div class="project-emoji" style="background:rgba(124,92,252,0.15)">🎨</div>
-            <div class="project-info">
-              <h4>AI 智慧教育综合体</h4>
-              <p>AI书法 + 晚托班 + 老带新营销 + 教师培训</p>
-            </div>
-          </div>
-          <div class="project-right">
-            <span class="project-status status-active">进行中</span>
-          </div>
-        </div>
-        <div class="project-item">
-          <div class="project-left">
-            <div class="project-emoji" style="background:rgba(59,130,246,0.15)">🎓</div>
-            <div class="project-info">
-              <h4>新加坡留学项目</h4>
-              <p>LSBF / 格林威治 / 东伦敦大学</p>
-            </div>
-          </div>
-          <div class="project-right">
-            <span class="project-status status-active">招生中</span>
-          </div>
-        </div>
-        <div class="project-item">
-          <div class="project-left">
-            <div class="project-emoji" style="background:rgba(6,182,212,0.15)">🇦🇺</div>
-            <div class="project-info">
-              <h4>澳洲留学项目</h4>
-              <p>新项目 · 详情待规划</p>
-            </div>
-          </div>
-          <div class="project-right">
-            <span class="project-status status-planning">筹备中</span>
-          </div>
-        </div>
-        <div class="project-item">
-          <div class="project-left">
-            <div class="project-emoji" style="background:rgba(239,68,68,0.15)">📱</div>
-            <div class="project-info">
-              <h4>小红书视频运营</h4>
-              <p>内容创作 + 视频上传推广</p>
-            </div>
-          </div>
-          <div class="project-right">
-            <span class="project-status status-active">进行中</span>
-          </div>
-        </div>
-        <div class="project-item">
-          <div class="project-left">
-            <div class="project-emoji" style="background:rgba(16,185,129,0.15)">💚</div>
-            <div class="project-info">
-              <h4>健康生活</h4>
-              <p>模块设计中 · 敬请期待</p>
-            </div>
-          </div>
-          <div class="project-right">
-            <span class="project-status status-review">规划中</span>
-          </div>
-        </div>
-      </div>
+      <div class="project-list" id="projectList"></div>
     </div>
-
-    <!-- Tasks -->
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title"><i class="ri-check-double-line"></i> 近期待办</div>
-        <span class="panel-badge">4 项</span>
+        <span class="panel-badge" id="todoCount">0 项</span>
       </div>
-      <div class="task-list">
-        <div class="task-item">
-          <div class="task-check" onclick="toggleTask(this)"><i class="ri-check-line"></i></div>
-          <span class="task-text">曹博士合作协议签署跟进</span>
-          <span class="task-priority priority-high">紧急</span>
-        </div>
-        <div class="task-item">
-          <div class="task-check" onclick="toggleTask(this)"><i class="ri-check-line"></i></div>
-          <span class="task-text">新加坡留学项目4月招生数据</span>
-          <span class="task-priority priority-medium">中等</span>
-        </div>
-        <div class="task-item">
-          <div class="task-check" onclick="toggleTask(this)"><i class="ri-check-line"></i></div>
-          <span class="task-text">小红书视频脚本 + 上传排期</span>
-          <span class="task-priority priority-medium">中等</span>
-        </div>
-        <div class="task-item">
-          <div class="task-check" onclick="toggleTask(this)"><i class="ri-check-line"></i></div>
-          <span class="task-text">澳洲留学项目前期调研</span>
-          <span class="task-priority priority-low">一般</span>
-        </div>
-      </div>
+      <div class="task-list" id="todoList"></div>
     </div>
   </div>
 
-  <!-- Right Sidebar: Chart + Team + Activity -->
+  <!-- Right Sidebar -->
   <div style="display:flex;flex-direction:column;gap:20px">
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title"><i class="ri-bar-chart-2-line"></i> 项目进度</div>
       </div>
-      <div class="chart-container">
-        <canvas id="projectChart"></canvas>
-      </div>
+      <div class="chart-container"><canvas id="projectChart"></canvas></div>
     </div>
     <div class="panel">
       <div class="panel-header">
         <div class="panel-title"><i class="ri-user-star-line"></i> 师资团队</div>
-        <span class="panel-badge">4 位</span>
+        <span class="panel-badge" id="teamCount">0 位</span>
       </div>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,#667eea,#764ba2)">🤖</div>
-          <div class="team-name">曹伟勋 博士</div>
-          <div class="team-role">AI教育 · 硅谷</div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,#f093fb,#f5576c)">✍️</div>
-          <div class="team-name">蔡校长</div>
-          <div class="team-role">书法 · 台湾</div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">🌍</div>
-          <div class="team-name">Sandy</div>
-          <div class="team-role">英文 · 台湾</div>
-        </div>
-        <div class="team-card">
-          <div class="team-avatar" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">📖</div>
-          <div class="team-name">资深教师</div>
-          <div class="team-role">晚托班 · 乔爱老师</div>
-        </div>
-      </div>
+      <div class="team-grid" id="teamGrid"></div>
     </div>
     <div class="panel" style="flex:1">
       <div class="panel-header">
         <div class="panel-title"><i class="ri-time-line"></i> 近期动态</div>
       </div>
-      <div class="activity-list">
-        <div class="activity-item">
-          <div class="activity-icon news"><i class="ri-newspaper-line"></i></div>
-          <div class="activity-content"><h4>每日新闻已生成</h4><p>36氪 / IT之家 / 少数派</p></div>
-        </div>
-        <div class="activity-item">
-          <div class="activity-icon doc"><i class="ri-file-word-line"></i></div>
-          <div class="activity-content"><h4>曹博士信息汇总</h4><p>桌面 · Word 文档</p></div>
-        </div>
-        <div class="activity-item">
-          <div class="activity-icon task"><i class="ri-check-line"></i></div>
-          <div class="activity-content"><h4>仪表盘 v2.0 完成</h4><p>新增日程表 + 项目合并</p></div>
-        </div>
-      </div>
+      <div class="activity-list" id="activityList"></div>
     </div>
   </div>
 </div>
@@ -456,81 +256,219 @@ body{background:var(--bg-primary);color:var(--text-primary);min-height:100vh;ove
 <!-- AI Tools -->
 <div class="tools-section">
   <div class="tools-title"><i class="ri-magic-line"></i> AI 能力中心</div>
-  <div class="tools-grid">
-    <div class="tool-item"><i class="ri-search-eye-line" style="color:#f59e0b"></i>信息研究</div>
-    <div class="tool-item"><i class="ri-file-text-line" style="color:#3b82f6"></i>文档生成</div>
-    <div class="tool-item"><i class="ri-bar-chart-grouped-line" style="color:#10b981"></i>数据分析</div>
-    <div class="tool-item"><i class="ri-palette-line" style="color:#ec4899"></i>创意设计</div>
-    <div class="tool-item"><i class="ri-code-s-slash-line" style="color:#8b5cf6"></i>编程开发</div>
-    <div class="tool-item"><i class="ri-translate-2" style="color:#06b6d4"></i>翻译润色</div>
-    <div class="tool-item"><i class="ri-video-line" style="color:#f43f5e"></i>视频生成</div>
-    <div class="tool-item"><i class="ri-image-line" style="color:#22d3ee"></i>AI 绘图</div>
-    <div class="tool-item"><i class="ri-music-2-line" style="color:#a855f7"></i>音乐创作</div>
-    <div class="tool-item"><i class="ri-book-open-line" style="color:#f97316"></i>学习计划</div>
-    <div class="tool-item"><i class="ri-funds-line" style="color:#14b8a6"></i>金融分析</div>
-    <div class="tool-item"><i class="ri-brain-line" style="color:#6366f1"></i>知识管理</div>
-    <div class="tool-item" id="calendarTool"><i class="ri-calendar-schedule-line" style="color:#ef4444"></i>日程管理<br><span style="font-size:10px;color:var(--text-secondary)">🔗 关联 Google 日历</span></div>
-    <div class="tool-item"><i class="ri-mail-send-line" style="color:#0ea5e9"></i>邮件处理</div>
-    <div class="tool-item"><i class="ri-global-line" style="color:#84cc16"></i>网页浏览</div>
-    <div class="tool-item"><i class="ri-robot-2-line" style="color:#d946ef"></i>智能推送</div>
-  </div>
+  <div class="tools-grid" id="toolsGrid"></div>
 </div>
 
 </div>
 
 <script>
+const SCHEDULE_ICONS = ['icon-spirit','icon-family','icon-focus','icon-lunch','icon-work','icon-gym','icon-home','icon-review','icon-sleep'];
+const SCHEDULE_RI = ['ri-sparkling-line','ri-heart-line','ri-focus-3-line','ri-restaurant-line','ri-briefcase-line','ri-boxing-line','ri-home-heart-line','ri-quill-pen-line','ri-moon-line'];
+const TOOL_ICONS = {'信息研究':'ri-search-eye-line','文档生成':'ri-file-text-line','数据分析':'ri-bar-chart-grouped-line','日程管理（关联 Google 日历）':'ri-calendar-schedule-line','邮件助手':'ri-mail-send-line','新闻摘要':'ri-newspaper-line','翻译工具':'ri-translate-2','图片生成':'ri-image-line','代码助手':'ri-code-s-slash-line','财务分析':'ri-funds-line','市场调研':'ri-search-line','项目管理':'ri-kanban-line','知识库':'ri-book-open-line','内容创作':'ri-quill-pen-line','视频脚本':'ri-video-line','学习助手':'ri-brain-line'};
+const TOOL_COLORS = ['#f59e0b','#3b82f6','#10b981','#ec4899','#8b5cf6','#06b6d4','#f43f5e','#22d3ee','#a855f7','#f97316','#14b8a6','#6366f1','#84cc16','#d946ef','#0ea5e9','#ef4444'];
+const TEAM_COLORS = [['#667eea','#764ba2'],['#f093fb','#f5576c'],['#4facfe','#00f2fe'],['#43e97b','#38f9d7']];
+const TEAM_EMOJIS = ['🤖','✍️','🌍','📖','🎵','📊','💡','🏆'];
+
+let appData = null;
+let chartInstance = null;
+
+async function loadData() {
+  try {
+    const base = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+    const res = await fetch(base + 'data.json?t=' + Date.now());
+    appData = await res.json();
+    render();
+    // Auto refresh every 60s
+    setInterval(loadData, 60000);
+  } catch(e) {
+    console.error('Failed to load data:', e);
+    document.getElementById('lastUpdate').textContent = '数据加载失败，请检查网络';
+  }
+}
+
+function render() {
+  if (!appData) return;
+  const d = appData;
+
+  // Header
+  document.getElementById('dashTitle').textContent = d.dashboard.title;
+  document.getElementById('dashSubtitle').textContent = d.dashboard.subtitle;
+
+  // Stats
+  const statsHtml = [
+    {icon:'ri-folder-3-line',cls:'purple',value:d.stats.active_projects,label:'活跃项目'},
+    {icon:'ri-team-line',cls:'green',value:d.stats.team_members,label:'师资团队'},
+    {icon:'ri-calendar-check-line',cls:'orange',value:d.stats.schedule_items,label:'日程事项'},
+    {icon:'ri-video-line',cls:'cyan',value:d.stats.pending_videos,label:'待上传视频'},
+    {icon:'ri-advertisement-line',cls:'pink',value:d.stats.marketing_activities,label:'营销活动'},
+  ].map(s=>`<div class="stat-card"><div class="stat-icon ${s.cls}"><i class="${s.icon}"></i></div><div class="stat-value">${s.value}</div><div class="stat-label">${s.label}</div></div>`).join('');
+  document.getElementById('statsGrid').innerHTML = statsHtml;
+
+  // Schedule
+  const completedCount = d.schedule.filter(s=>s.completed).length;
+  document.getElementById('scheduleProgress').textContent = `${completedCount}/${d.schedule.length} 已完成`;
+  const scheduleHtml = d.schedule.map((s,i) => {
+    const startH = parseInt(s.time.split(':')[0]);
+    const endH = parseInt(s.end.split(':')[0]);
+    const dur = endH - startH || 1;
+    const iconIdx = i % SCHEDULE_ICONS.length;
+    return `<div class="schedule-item${s.completed?' completed':''}" onclick="toggleSchedule(this,${i})">
+      <div class="schedule-time"><span class="time">${s.time}</span><span class="duration">${dur}h</span></div>
+      <div class="schedule-body">
+        <div class="schedule-info"><h4>${s.task}</h4></div>
+        <div class="schedule-icon ${SCHEDULE_ICONS[iconIdx]}"><i class="${SCHEDULE_RI[iconIdx]}"></i></div>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('scheduleList').innerHTML = scheduleHtml;
+
+  // Projects
+  document.getElementById('projectCount').textContent = d.projects.length + ' 个项目';
+  const projectEmojis = ['🎨','🎓','🇦🇺','📱','💚','🚀','📚','🎯'];
+  const projectBgs = ['rgba(124,92,252,0.15)','rgba(59,130,246,0.15)','rgba(6,182,212,0.15)','rgba(239,68,68,0.15)','rgba(16,185,129,0.15)','rgba(245,158,11,0.15)','rgba(168,85,247,0.15)','rgba(6,182,212,0.15)'];
+  const projectHtml = d.projects.map((p,i) => {
+    const sc = p.status_color || 'green';
+    const statusCls = sc==='green'?'status-active':sc==='orange'?'status-planning':'status-review';
+    return `<div class="project-item">
+      <div class="project-left">
+        <div class="project-emoji" style="background:${projectBgs[i%projectBgs.length]}">${projectEmojis[i%projectEmojis.length]}</div>
+        <div class="project-info"><h4>${p.name}</h4><p>${p.description}</p></div>
+      </div>
+      <div class="project-right"><span class="project-status ${statusCls}">${p.status}</span></div>
+    </div>`;
+  }).join('');
+  document.getElementById('projectList').innerHTML = projectHtml;
+
+  // Todos
+  document.getElementById('todoCount').textContent = d.todos.length + ' 项';
+  const todoHtml = d.todos.map(t => {
+    const priCls = t.urgent?'priority-high':'priority-low';
+    const priText = t.urgent?'紧急':'一般';
+    return `<div class="task-item">
+      <div class="task-check${t.completed?' done':''}" onclick="toggleTask(this,${d.todos.indexOf(t)})"><i class="ri-check-line"></i></div>
+      <span class="task-text${t.completed?' done':''}">${t.text}</span>
+      <span class="task-priority ${priCls}">${priText}</span>
+    </div>`;
+  }).join('');
+  document.getElementById('todoList').innerHTML = todoHtml;
+
+  // Team
+  document.getElementById('teamCount').textContent = d.team.length + ' 位';
+  const teamHtml = d.team.map((t,i) => `<div class="team-card">
+    <div class="team-avatar" style="background:linear-gradient(135deg,${TEAM_COLORS[i%TEAM_COLORS.length].join(',')})">${TEAM_EMOJIS[i%TEAM_EMOJIS.length]}</div>
+    <div class="team-name">${t.name}</div>
+    <div class="team-role">${t.role}${t.contact?' · '+t.contact:''}</div>
+  </div>`).join('');
+  document.getElementById('teamGrid').innerHTML = teamHtml;
+
+  // Activity
+  const actIcons = ['doc','task','news','alert'];
+  const actRis = ['ri-file-word-line','ri-check-line','ri-newspaper-line','ri-advertisement-line'];
+  const activityHtml = d.recent_updates.map((a,i) => `<div class="activity-item">
+    <div class="activity-icon ${actIcons[i%actIcons.length]}"><i class="${actRis[i%actRis.length]}"></i></div>
+    <div class="activity-content"><h4>${a.text}</h4><p>${a.date}</p></div>
+  </div>`).join('');
+  document.getElementById('activityList').innerHTML = activityHtml;
+
+  // Tools
+  const toolsHtml = d.ai_tools.map((t,i) => {
+    const icon = TOOL_ICONS[t] || 'ri-magic-line';
+    const color = TOOL_COLORS[i%TOOL_COLORS.length];
+    return `<div class="tool-item"><i class="${icon}" style="color:${color}"></i>${t}</div>`;
+  }).join('');
+  document.getElementById('toolsGrid').innerHTML = toolsHtml;
+
+  // Chart
+  renderChart(d);
+
+  // Last update
+  document.getElementById('lastUpdate').textContent = '数据更新: ' + new Date().toLocaleTimeString('zh-CN');
+
+  // Show app
+  document.getElementById('app').style.opacity = '1';
+  document.getElementById('loadingOverlay').style.display = 'none';
+}
+
+function renderChart(d) {
+  if (chartInstance) chartInstance.destroy();
+  const ctx = document.getElementById('projectChart').getContext('2d');
+  const colors = ['#7c5cfc','#3b82f6','#06b6d4','#ef4444','#10b981','#f59e0b','#a855f7','#ec4899'];
+  chartInstance = new Chart(ctx, {
+    type:'doughnut',
+    data:{
+      labels: d.projects.map(p=>p.name),
+      datasets:[{data: d.projects.map(p=>Math.floor(Math.random()*30)+10),backgroundColor:colors.slice(0,d.projects.length),borderWidth:0,borderRadius:4,spacing:3}]
+    },
+    options:{responsive:true,maintainAspectRatio:false,cutout:'65%',plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:9},padding:6,usePointStyle:true,pointStyleWidth:8}}}}
+  });
+}
+
+// Toggle schedule — 用 ☑️ localStorage 按日期保存
+function getTodayKey() { return 'schedule_' + new Date().toISOString().slice(0, 10); }
+function loadChecked() { try { return JSON.parse(localStorage.getItem(getTodayKey())) || {}; } catch(e) { return {}; } }
+function saveChecked(map) { localStorage.setItem(getTodayKey(), JSON.stringify(map)); }
+
+function toggleSchedule(el, idx) {
+  const checked = loadChecked();
+  checked[idx] = !checked[idx];
+  saveChecked(checked);
+  applyScheduleState(el, idx, checked[idx]);
+  updateScheduleProgress();
+}
+
+function applyScheduleState(el, idx, done) {
+  if (done) {
+    el.classList.add('completed');
+    el.classList.remove('active');
+    // 勾选效果：划线 + 绿色背景
+    if (!el.querySelector('.check-mark')) {
+      const mark = document.createElement('span');
+      mark.className = 'check-mark';
+      mark.textContent = '✅';
+      mark.style.cssText = 'font-size:16px;flex-shrink:0;';
+      el.querySelector('.schedule-body').insertBefore(mark, el.querySelector('.schedule-body').firstChild);
+    }
+  } else {
+    el.classList.remove('completed');
+    const mark = el.querySelector('.check-mark');
+    if (mark) mark.remove();
+  }
+}
+
+function updateScheduleProgress() {
+  const checked = loadChecked();
+  const total = appData.schedule.length;
+  const count = Object.values(checked).filter(Boolean).length;
+  document.getElementById('scheduleProgress').textContent = count + '/' + total + ' 已完成';
+}
+
+function restoreScheduleChecks() {
+  const checked = loadChecked();
+  const items = document.querySelectorAll('.schedule-item');
+  items.forEach((el, idx) => {
+    if (checked[idx]) applyScheduleState(el, idx, true);
+  });
+  updateScheduleProgress();
+}
+
+// Toggle task (visual only)
+function toggleTask(el, idx) {
+  el.classList.toggle('done');
+  el.parentElement.querySelector('.task-text').classList.toggle('done');
+}
+
 // Clock
 function updateClock(){
   const now=new Date();
   document.getElementById('currentTime').textContent=now.toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});
   document.getElementById('currentDate').textContent=now.toLocaleDateString('zh-CN',{year:'numeric',month:'long',day:'numeric',weekday:'long'});
-  highlightCurrentSchedule(now);
 }
 updateClock();setInterval(updateClock,1000);
 
-// Highlight current schedule
-function highlightCurrentSchedule(now){
-  const h=now.getHours(),m=now.getMinutes(),t=h*60+m;
-  const ranges=[[390,450],[450,510],[510,750],[750,810],[810,1020],[1020,1110],[1110,1230],[1230,1290],[1290,1320]];
-  const items=document.querySelectorAll('.schedule-item');
-  items.forEach((item,i)=>{
-    if(i<ranges.length && t>=ranges[i][0] && t<ranges[i][1]){
-      item.classList.add('active');
-    }else{
-      item.classList.remove('active');
-    }
-  });
-}
-
-// Toggle schedule completion
-function toggleSchedule(el){
-  el.classList.toggle('active');
-  const count=document.querySelectorAll('.schedule-item.active').length;
-  document.getElementById('scheduleProgress').textContent=count+'/9 已完成';
-}
-
-// Task toggle
-function toggleTask(el){
-  el.classList.toggle('done');
-  el.parentElement.querySelector('.task-text').classList.toggle('done');
-}
-
-// Chart
-const ctx=document.getElementById('projectChart').getContext('2d');
-new Chart(ctx,{
-  type:'doughnut',
-  data:{
-    labels:['AI智慧教育','新加坡留学','澳洲留学','小红书运营','健康生活'],
-    datasets:[{
-      data:[40,25,10,15,10],
-      backgroundColor:['#7c5cfc','#3b82f6','#06b6d4','#ef4444','#10b981'],
-      borderWidth:0,borderRadius:4,spacing:3
-    }]
-  },
-  options:{
-    responsive:true,maintainAspectRatio:false,cutout:'65%',
-    plugins:{legend:{position:'bottom',labels:{color:'#94a3b8',font:{size:10},padding:8,usePointStyle:true,pointStyleWidth:8}}}
-  }
+// Start
+loadData().then(() => {
+  // 恢复今日打勾状态
+  setTimeout(restoreScheduleChecks, 100);
 });
 </script>
 </body>

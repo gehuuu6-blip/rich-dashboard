@@ -2,199 +2,371 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>每日全球热点新闻 - 2026年4月29日</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日全球热点新闻 | 2026年4月30日</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#0f0f23;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;line-height:1.7;padding:0;min-height:100vh}
-.header{background:linear-gradient(135deg,#1a1a3e 0%,#0f0f23 50%,#1a1a3e 100%);padding:28px 20px 22px;text-align:center;border-bottom:1px solid #2a2a4a;position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
-.header h1{font-size:1.5em;background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;font-weight:700}
-.header .date{font-size:.85em;color:#94a3b8;letter-spacing:1px}
-.container{max-width:720px;margin:0 auto;padding:12px 16px 40px}
-.section{margin-bottom:28px}
-.section-title{display:flex;align-items:center;gap:8px;font-size:1.15em;font-weight:700;padding:14px 16px;background:linear-gradient(135deg,#1e1e3f,#16162e);border-radius:12px;border-left:3px solid;margin-bottom:12px}
-.section-title .icon{font-size:1.2em}
-.section-world .section-title{border-color:#f472b6;color:#f9a8d4}
-.section-economy .section-title{border-color:#60a5fa;color:#93c5fd}
-.section-tech .section-title{border-color:#a78bfa;color:#c4b5fd}
-.section-society .section-title{border-color:#34d399;color:#6ee7b7}
-.section-china .section-title{border-color:#fbbf24;color:#fcd34d}
-.card{background:#16162e;border-radius:10px;padding:14px 16px;margin-bottom:10px;border:1px solid #1e1e3f;transition:transform .2s,border-color .2s}
-.card:active{transform:scale(.99);border-color:#3a3a5f}
-.card.hot{border-left:3px solid #ef4444}
-.card.hot::before{content:"🔥";margin-right:6px}
-.card h3{font-size:.95em;font-weight:600;margin-bottom:5px;color:#f1f5f9;line-height:1.5}
-.card p{font-size:.83em;color:#94a3b8;line-height:1.65}
-.tag{display:inline-block;font-size:.7em;padding:2px 8px;border-radius:20px;margin-right:5px;font-weight:500}
-.tag-red{background:rgba(239,68,68,.15);color:#fca5a5}
-.tag-blue{background:rgba(96,165,250,.15);color:#93c5fd}
-.tag-purple{background:rgba(167,139,250,.15);color:#c4b5fd}
-.tag-green{background:rgba(52,211,153,.15);color:#6ee7b7}
-.tag-yellow{background:rgba(251,191,36,.15);color:#fcd34d}
-.tag-pink{background:rgba(244,114,182,.15);color:#f9a8d4}
-.divider{height:1px;background:linear-gradient(90deg,transparent,#2a2a4a,transparent);margin:20px 0}
-.footer{text-align:center;padding:20px;font-size:.75em;color:#475569;border-top:1px solid #1e1e3f;margin-top:20px}
-.section .card:last-child{margin-bottom:0}
-@media(min-width:480px){.header h1{font-size:1.8em}.container{padding:20px 24px 50px}.card h3{font-size:1em}.card p{font-size:.88em}}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0f0f23;
+    color: #e2e8f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+    line-height: 1.7;
+    padding: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 24px 0 20px;
+    border-bottom: 1px solid #1e293b;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-size: 1.5em;
+    color: #f8fafc;
+    margin-bottom: 8px;
+  }
+  .header .date {
+    color: #94a3b8;
+    font-size: 0.9em;
+  }
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-title {
+    font-size: 1.15em;
+    color: #fbbf24;
+    border-left: 3px solid #fbbf24;
+    padding-left: 12px;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+  .news-card {
+    background: #1a1a2e;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    border: 1px solid #1e293b;
+    transition: border-color 0.2s;
+  }
+  .news-card:hover {
+    border-color: #334155;
+  }
+  .news-card .tag {
+    display: inline-block;
+    font-size: 0.7em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-right: 6px;
+    font-weight: 600;
+  }
+  .tag-red { background: rgba(239,68,68,0.2); color: #f87171; }
+  .tag-orange { background: rgba(251,146,60,0.2); color: #fb923c; }
+  .tag-green { background: rgba(34,197,94,0.2); color: #22c55e; }
+  .tag-blue { background: rgba(59,130,246,0.2); color: #60a5fa; }
+  .tag-purple { background: rgba(168,85,247,0.2); color: #c084fc; }
+  .tag-pink { background: rgba(236,72,153,0.2); color: #f472b6; }
+  .news-card h3 {
+    font-size: 1em;
+    color: #f1f5f9;
+    margin-bottom: 6px;
+    display: inline;
+  }
+  .news-card p {
+    font-size: 0.88em;
+    color: #94a3b8;
+    margin-top: 6px;
+  }
+  .hot {
+    background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(251,146,60,0.05));
+    border-color: rgba(239,68,68,0.3);
+  }
+  .footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #475569;
+    font-size: 0.8em;
+    border-top: 1px solid #1e293b;
+    margin-top: 16px;
+  }
+  .emoji-icon {
+    margin-right: 6px;
+  }
+  .score {
+    font-size: 0.7em;
+    color: #64748b;
+    float: right;
+    margin-top: 2px;
+  }
 </style>
 </head>
 <body>
 
 <div class="header">
   <h1>📰 每日全球热点新闻</h1>
-  <div class="date">2026年4月29日 星期三</div>
+  <div class="date">2026年4月30日 周四</div>
 </div>
 
-<div class="container">
+<!-- 一、国际政治与外交 -->
+<div class="section">
+  <div class="section-title">🌍 国际政治与外交</div>
 
-<!-- 国际政治与外交 -->
-<div class="section section-world">
-  <div class="section-title"><span class="icon">🌍</span> 国际政治与外交</div>
-
-  <div class="card">
-    <h3>联合国大会主席贝尔伯克访华</h3>
-    <p>第80届联合国大会主席贝尔伯克将于4月29日至30日访华，正值中东局势紧张及美伊谈判僵持之际，中方将就全球治理议题交换意见。</p>
+  <div class="news-card hot">
+    <span class="tag tag-red">🔥 头条</span>
+    <h3>美伊冲突持续升级，特朗普称正通过电话与伊朗谈判</h3>
+    <span class="score">★★★★★</span>
+    <p>特朗普拒绝伊朗重开霍尔木兹海峡的提议，誓言继续维持海上封锁。美军已令42艘商船改道，冲突已花费250亿美元。停火谈判陷入僵局。</p>
   </div>
 
-  <div class="card">
-    <h3>日本首相高市早苗宣称"为长期战争做准备"</h3>
-    <p>高市早苗公开声称修订"安保三文件"是左右国家命运的重要工作，要推进应对"新型作战方式"及为"长期战争"做好准备。外交部回应：必须高度警惕。</p>
+  <div class="news-card">
+    <span class="tag tag-red">紧急</span>
+    <h3>2万名海员滞留波斯湾，部分船员已遇难</h3>
+    <span class="score">★★★★★</span>
+    <p>霍尔木兹海峡封锁导致严重人道主义危机。日本首相称滞留日本油轮已安全通过海峡。</p>
   </div>
 
-  <div class="card">
-    <h3>美伊谈判僵局持续，中东局势紧张</h3>
-    <p>美伊围绕核权益和中东霸权的博弈持续升温。伊朗释放矛盾信号，美国军事威慑加码，双方陷入"谈不拢就打、打不拢再谈"的双线死局。</p>
+  <div class="news-card">
+    <span class="tag tag-orange">外交</span>
+    <h3>伊朗外长赴俄罗斯与普京会谈</h3>
+    <span class="score">★★★★</span>
+    <p>阿拉格齐在美伊局势紧张之际访问莫斯科，与普京举行高层会谈。中国也在联合国呼吁对中东局势保持克制。</p>
   </div>
 
-  <div class="card">
-    <h3>以色列-黎巴嫩冲突升级</h3>
-    <p>内塔尼亚胡表示以军拥有充分行动自由打击黎巴嫩真主党目标。英国海事机构通报，近两月霍尔木兹海峡等海域发生38起安全事件。</p>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 全球经济与市场 -->
-<div class="section section-economy">
-  <div class="section-title"><span class="icon">💰</span> 全球经济与市场</div>
-
-  <div class="card hot">
-    <h3>阿联酋宣布退出欧佩克及"欧佩克+"</h3>
-    <p>阿联酋4月28日宣布自5月1日起退出石油输出国组织及"欧佩克+"机制。此举将严重削弱欧佩克凝聚力及沙特在全球石油市场的影响力，全球能源格局面临重塑。</p>
+  <div class="news-card">
+    <span class="tag tag-blue">联合国</span>
+    <h3>联合国秘书长呼吁重新开放霍尔木兹海峡</h3>
+    <span class="score">★★★★</span>
+    <p>美军同时在印度洋拦截与伊朗有关的油轮。</p>
   </div>
 
-  <div class="card">
-    <h3>中共中央政治局召开会议部署经济工作</h3>
-    <p>会议深入挖掘内需潜力，要求有序化解地方政府债务风险，着力解决拖欠企业账款问题。会议肯定了今年以来政策靠前发力的成效。</p>
+  <div class="news-card">
+    <span class="tag tag-blue">欧盟</span>
+    <h3>欧盟批准900亿欧元对乌贷款，峰会议论共同防御</h3>
+    <span class="score">★★★★</span>
+    <p>塞浦路斯峰会聚焦伊朗战争外溢影响。</p>
   </div>
 
-  <div class="card">
-    <h3>英伟达创历史新高，芯片指数终结18日连涨</h3>
-    <p>费城半导体指数终结创纪录的18日连涨，AMD跌近4%，但英伟达涨4%再创历史新高。"大空头"伯里做空半导体板块引发关注。</p>
+  <div class="news-card">
+    <span class="tag tag-orange">中日</span>
+    <h3>中国警告日本不要走向重新军事化</h3>
+    <span class="score">★★★</span>
+    <p>针对日本相关审查文件动向发出明确警告。</p>
   </div>
 
-  <div class="card">
-    <h3>OpenAI联手高通开发手机芯片</h3>
-    <p>报道称OpenAI与高通合作开发智能手机芯片，苹果股价承压跌超1%。SpaceX拟600亿美元收购AI编程软件Cursor。</p>
-  </div>
-
-  <div class="card">
-    <h3>油价逼近100美元/桶，全球通胀压力犹存</h3>
-    <p>霍尔木兹海峡局势紧张推升原油供应担忧，国际油价持续上行，叠加美联储降息预期降温，全球通胀压力不减。</p>
-  </div>
-
-  <div class="card">
-    <h3>IMF发布4月《世界经济展望》</h3>
-    <p>预测2026年全球通胀将小幅上升，新兴市场增速放缓和通胀上升问题尤为明显，冲突延续及贸易保护主义构成主要下行风险。</p>
+  <div class="news-card">
+    <span class="tag tag-purple">乌以</span>
+    <h3>乌克兰怒斥以色列并召见大使</h3>
+    <span class="score">★★★</span>
+    <p>泽连斯基就相关事件发声，双方关系出现紧张。</p>
   </div>
 </div>
 
-<div class="divider"></div>
+<!-- 二、全球经济与市场 -->
+<div class="section">
+  <div class="section-title">💰 全球经济与市场</div>
 
-<!-- 科技与创新 -->
-<div class="section section-tech">
-  <div class="section-title"><span class="icon">🔬</span> 科技与创新</div>
-
-  <div class="card hot">
-    <h3>GPT-6正式发布，OpenAI豪赌新架构</h3>
-    <p>采用全新Symphony双系统推理架构，将快速响应引擎和深度推理引擎整合到同一模型中，实现快速回答与深度思考兼顾，被视为AI能力的新里程碑。</p>
+  <div class="news-card hot">
+    <span class="tag tag-red">🔥 头条</span>
+    <h3>美联储按兵不动，内部分歧创34年最高纪录</h3>
+    <span class="score">★★★★★</span>
+    <p>维持利率3.50%-3.75%不变，投票8比4，4人投反对票创1992年以来最高分歧。鹰派信号推动市场上调2027年加息预期。</p>
   </div>
 
-  <div class="card">
-    <h3>OpenAI发布GPT-Image-2图像生成模型</h3>
-    <p>首个具备推理能力的图像生成模型，在Arena评测榜单中综合表现第一，可进行联网搜索和输出自检。</p>
+  <div class="news-card">
+    <span class="tag tag-red">美联储</span>
+    <h3>鲍威尔暗示主席任期届满后留任理事</h3>
+    <span class="score">★★★★</span>
+    <p>称因面临"法律攻击"需维护机构独立性。参议院已通过沃什出任下任美联储主席提名。特朗普嘲讽鲍威尔。</p>
   </div>
 
-  <div class="card">
-    <h3>斯坦福发布2026年AI指数报告</h3>
-    <p>系统梳理全球AI发展态势，大模型竞争格局加速演进，报告为理解AI产业趋势提供权威参考。</p>
+  <div class="news-card">
+    <span class="tag tag-red">原油</span>
+    <h3>布伦特原油逼近120美元，创近4年新高</h3>
+    <span class="score">★★★★★</span>
+    <p>受美伊海上封锁及阿联酋退出OPEC双重冲击，布油一度涨超7%。WTI收于107美元下方。</p>
   </div>
 
-  <div class="card">
-    <h3>广东省举办人工智能应用对接大会</h3>
-    <p>4月27日深圳大会集中发布华为昇腾系列、腾讯智能体等产品，覆盖AI+制造、政务、医疗、教育等十多个行业23个典型案例。</p>
+  <div class="news-card">
+    <span class="tag tag-orange">IMF</span>
+    <h3>IMF下调全球经济增长预期</h3>
+    <span class="score">★★★★</span>
+    <p>4月《世界经济展望》下调多数主要经济体预测，中东局势成最大新考验。</p>
   </div>
 
-  <div class="card">
-    <h3>欧盟监管新规：谷歌须向第三方AI开放数据</h3>
-    <p>欧盟要求谷歌以公平条件向第三方搜索引擎开放搜索数据，AI聊天机器人被纳入受益范围。</p>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- 社会与文化 -->
-<div class="section section-society">
-  <div class="section-title"><span class="icon">🏛</span> 社会与文化</div>
-
-  <div class="card">
-    <h3>长沙籍画家蔡皋获国际安徒生奖插画家奖</h3>
-    <p>80岁的长沙籍绘本画家蔡皋获得2026年国际安徒生奖插画家奖，成为首位斩获该奖项的中国插画师。</p>
+  <div class="news-card">
+    <span class="tag tag-purple">黄金</span>
+    <h3>现货黄金连跌三天，跌至4500美元上方</h3>
+    <span class="score">★★★</span>
+    <p>战争加剧通胀风险及美元走强，金价出现技术性抛售。</p>
   </div>
 
-  <div class="card">
-    <h3>我国自5月1日起对所有非洲建交国实施零关税</h3>
-    <p>进一步深化中非经贸合作，拓宽非洲商品进入中国市场渠道。</p>
-  </div>
-
-  <div class="card">
-    <h3>江淮江南等地有强降雨和强对流天气</h3>
-    <p>预计4月28日至29日，江淮、江汉及江南、华南等地有强降雨和强对流天气，西北地区多大风沙尘天气。</p>
+  <div class="news-card">
+    <span class="tag tag-blue">欧股</span>
+    <h3>欧股收跌，市场定价英欧央行今年各加息三次</h3>
+    <span class="score">★★★</span>
+    <p>斯托克欧洲600指数跌0.6%，收益率曲线呈熊市趋平。</p>
   </div>
 </div>
 
-<div class="divider"></div>
+<!-- 三、科技与创新 -->
+<div class="section">
+  <div class="section-title">🖥️ 科技与创新</div>
 
-<!-- 中国国内重要新闻 -->
-<div class="section section-china">
-  <div class="section-title"><span class="icon">🇨🇳</span> 中国国内重要新闻</div>
-
-  <div class="card">
-    <h3>企业国有资产法迎来首次修订</h3>
-    <p>修订草案4月27日提请全国人大常委会审议，这是该法自2009年施行以来的首次修订，进一步完善企业国有资产管理监督制度。</p>
+  <div class="news-card hot">
+    <span class="tag tag-green">财报</span>
+    <h3>谷歌Q1营收1099亿美元，盘后大涨超6%</h3>
+    <span class="score">★★★★★</span>
+    <p>净利润626亿（同比增81%），谷歌云营收200亿（增63%），积压订单近翻倍，宣布股息提高5%。</p>
   </div>
 
-  <div class="card">
-    <h3>国家能源局：完善绿电直连促进算电协同</h3>
-    <p>将完善绿电直连等促进算电协同政策举措，预计2026年相关措施加速落地。</p>
+  <div class="news-card">
+    <span class="tag tag-green">财报</span>
+    <h3>微软AI业务年化收入超370亿美元，暴增123%</h3>
+    <span class="score">★★★★★</span>
+    <p>营收829亿美元（增18%），净利润318亿美元（增23%）。</p>
   </div>
 
-  <div class="card">
-    <h3>证监会严打严防上市公司财务造假</h3>
-    <p>证监会部署专项行动严打财务造假，沪深北交易所同步修订交易规则。</p>
+  <div class="news-card">
+    <span class="tag tag-red">暴跌</span>
+    <h3>Meta全年资本支出上调至1450亿，盘后重挫6.6%</h3>
+    <span class="score">★★★★★</span>
+    <p>Q1营收563亿、净利268亿均超预期，但巨额AI支出引发投资回报严重担忧。</p>
   </div>
 
-  <div class="card">
-    <h3>最高法发布知识产权司法保护实施方案</h3>
-    <p>发布2026-2030年知识产权司法保护实施方案及惩罚性赔偿司法解释，加大知识产权保护力度。</p>
+  <div class="news-card">
+    <span class="tag tag-orange">财报</span>
+    <h3>亚马逊AWS增速创15季度新高，自由现金流骤降95%</h3>
+    <span class="score">★★★★</span>
+    <p>净销售额1815亿美元（增17%），净利润303亿美元，巨额AI资本支出拖累现金流。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-purple">融资</span>
+    <h3>Anthropic估值或超9000亿美元</h3>
+    <span class="score">★★★★</span>
+    <p>Claude开发商正考虑新一轮融资，有望超越OpenAI成为全球最高估值AI初创公司。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-pink">诉讼</span>
+    <h3>马斯克诉OpenAI出庭，指控奥特曼"不诚实"</h3>
+    <span class="score">★★★★</span>
+    <p>马斯克指控OpenAI背叛安全使命，寻求1500亿美元赔偿。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-green">大涨</span>
+    <h3>英特尔大涨逾12%创历史新高</h3>
+    <span class="score">★★★</span>
+    <p>AI趋势转变利好及一季报超预期推动。英伟达收跌但市值仍超5万亿美元。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-blue">产品</span>
+    <h3>苹果iOS 27将推Siri相机模式</h3>
+    <span class="score">★★★</span>
+    <p>升级视觉AI功能。高通汽车业务创季度纪录（增38%），PayPal拟分拆Venmo。</p>
+  </div>
+</div>
+
+<!-- 四、社会与文化 -->
+<div class="section">
+  <div class="section-title">🎭 社会与文化</div>
+
+  <div class="news-card">
+    <span class="tag tag-green">体育</span>
+    <h3>斯诺克世锦赛：吴宜泽13-8胜瓦菲晋级四强</h3>
+    <span class="score">★★★★</span>
+    <p>半决赛将对阵马克·艾伦。此前赵心童已13-9击败丁俊晖闯入八强。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-red">安全</span>
+    <h3>白宫记者协会晚宴遇袭</h3>
+    <span class="score">★★★</span>
+    <p>持霰弹枪者试图突破安保并朝特勤局特工开枪，嫌犯被制服，特工无恙。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-orange">经济</span>
+    <h3>伊朗货币跌至历史新低：1美元换181万里亚尔</h3>
+    <span class="score">★★★</span>
+    <p>上月刚发行1000万面值新钞，国内经济形势严峻。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-blue">劳动节</span>
+    <h3>全国五一劳动奖表彰大会举行</h3>
+    <span class="score">★★★</span>
+    <p>全国总工会表彰今年全国五一劳动奖3024个获得者。</p>
+  </div>
+</div>
+
+<!-- 五、中国国内要闻 -->
+<div class="section">
+  <div class="section-title">🇨🇳 中国国内要闻</div>
+
+  <div class="news-card hot">
+    <span class="tag tag-red">🔥 头条</span>
+    <h3>政治局会议定调："六网"成基建新方向</h3>
+    <span class="score">★★★★★</span>
+    <p>政策重点从总量刺激转向结构调整，明确加强水网、新型电网、算力网、通信网、地下管网、物流网规划建设。推动成熟重大工程开工。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-orange">经济</span>
+    <h3>一季度GDP增5.0%，政策进入观察期</h3>
+    <span class="score">★★★★</span>
+    <p>主要指标好于预期，短期内不再出台重大增量措施。二季度降息降准概率降低。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-green">产业</span>
+    <h3>服务业"十五五"还有20万亿增长空间</h3>
+    <span class="score">★★★★</span>
+    <p>国务院提出到2030年服务业总规模迈上100万亿元台阶。促消费从需求刺激转向供给发力。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-blue">能源</span>
+    <h3>2026年新能源装机或超3亿千瓦</h3>
+    <span class="score">★★★</span>
+    <p>中电联发布报告，用电量稳步增长，新能源装机提速。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-green">资源</span>
+    <h3>中国矿产31项世界第一，产业链主导地位巩固</h3>
+    <span class="score">★★★</span>
+    <p>中国矿产在全球产业链中的关键地位进一步强化。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-purple">A股</span>
+    <h3>建投报告预测A股将延续"慢牛"</h3>
+    <span class="score">★★★★</span>
+    <p>沪深300全年有望获10%以上涨幅，上证最高或触及4500点。驱动力从估值转向盈利。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-orange">企业</span>
+    <h3>京东京喜GMV涨10倍，拟再投百亿元加码</h3>
+    <span class="score">★★★</span>
+    <p>启动"厂货百补"战略，引发能否破局低价内卷的讨论。</p>
+  </div>
+
+  <div class="news-card">
+    <span class="tag tag-pink">事件</span>
+    <h3>55岁资本大佬陆宏达涉嫌刑事犯罪被羁押</h3>
+    <span class="score">★★★</span>
+    <p>被羁押在深圳某看守所，在美涉嫌性侵被诉属实。</p>
   </div>
 </div>
 
 <div class="footer">
-  数据来源：新华社、央视新闻、外交部、华尔街见闻、财联社等<br>
-  自动生成 · WorkBuddy Daily News
+  📡 数据来源：新浪财经 · 中国日报 · 每日经济新闻 · 界面新闻 · 新华社 · IMF 等<br>
+  ⏰ 收集时间：2026年4月30日 07:11 (UTC+8)
 </div>
 
-</div>
 </body>
 </html>

@@ -3,377 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日全球热点新闻 — 2026年5月2日</title>
+<title>每日全球热点新闻 2026年5月2日</title>
 <style>
-  :root {
-    --bg-primary: #0f0f23;
-    --bg-card: #1a1a3e;
-    --bg-card-hover: #222255;
-    --text-primary: #e2e8f0;
-    --text-secondary: #a0aec0;
-    --text-muted: #636e8a;
-    --accent: #6366f1;
-    --accent-light: #818cf8;
-    --red: #ef4444;
-    --orange: #f59e0b;
-    --yellow: #eab308;
-    --green: #22c55e;
-    --blue: #3b82f6;
-    --border: #2d2d5e;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.7;
-    min-height: 100vh;
-  }
-
-  .container {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 20px 16px 60px;
-  }
-
-  .header {
-    text-align: center;
-    padding: 32px 0 24px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 28px;
-  }
-
-  .header .emoji { font-size: 2.4rem; margin-bottom: 8px; }
-
-  .header h1 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
-    background: linear-gradient(135deg, var(--accent-light), #c084fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .header .date {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-top: 6px;
-  }
-
-  .header .summary {
-    color: var(--text-secondary);
-    font-size: 0.82rem;
-    margin-top: 10px;
-    background: var(--bg-card);
-    display: inline-block;
-    padding: 4px 14px;
-    border-radius: 20px;
-  }
-
-  .category {
-    margin-bottom: 28px;
-  }
-
-  .category-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 14px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .category-title .icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.95rem;
-    flex-shrink: 0;
-  }
-
-  .cat-politics .icon { background: rgba(239,68,68,0.15); }
-  .cat-economy .icon { background: rgba(59,130,246,0.15); }
-  .cat-tech .icon { background: rgba(99,102,241,0.15); }
-  .cat-society .icon { background: rgba(234,179,8,0.15); }
-  .cat-china .icon { background: rgba(34,197,94,0.15); }
-
-  .news-item {
-    background: var(--bg-card);
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 10px;
-    border: 1px solid transparent;
-    transition: all 0.2s ease;
-  }
-
-  .news-item:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--border);
-  }
-
-  .news-item .tag {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 6px;
-    margin-bottom: 6px;
-  }
-
-  .tag-red { background: rgba(239,68,68,0.18); color: #fca5a5; }
-  .tag-orange { background: rgba(245,158,11,0.18); color: #fcd34d; }
-  .tag-yellow { background: rgba(234,179,8,0.18); color: #fde047; }
-  .tag-green { background: rgba(34,197,94,0.18); color: #86efac; }
-
-  .news-item h3 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 4px;
-    color: var(--text-primary);
-  }
-
-  .news-item p {
-    font-size: 0.84rem;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .news-num {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    line-height: 22px;
-    text-align: center;
-    border-radius: 6px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    background: var(--border);
-    color: var(--text-muted);
-    margin-right: 6px;
-    vertical-align: middle;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 24px 0 16px;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted);
-    font-size: 0.78rem;
-  }
-
-  @media (max-width: 480px) {
-    .container { padding: 12px 12px 40px; }
-    .header h1 { font-size: 1.3rem; }
-    .news-item { padding: 12px; }
-    .news-item h3 { font-size: 0.9rem; }
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #0f0f23;
+  color: #e2e8f0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  line-height: 1.7;
+  padding: 0;
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+.header {
+  text-align: center;
+  padding: 30px 0 20px;
+  border-bottom: 1px solid rgba(226,232,240,0.1);
+  margin-bottom: 28px;
+}
+.header h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 6px;
+}
+.header .date {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+.header .update-time {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+.section {
+  margin-bottom: 32px;
+}
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 16px;
+  padding-left: 12px;
+  border-left: 3px solid;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title.politics { border-color: #f87171; }
+.section-title.economy { border-color: #fbbf24; }
+.section-title.tech { border-color: #60a5fa; }
+.section-title.society { border-color: #a78bfa; }
+.section-title.china { border-color: #34d399; }
+.news-item {
+  background: rgba(226,232,240,0.04);
+  border: 1px solid rgba(226,232,240,0.06);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  transition: background 0.2s;
+}
+.news-item:hover {
+  background: rgba(226,232,240,0.08);
+}
+.news-item.highlight {
+  border-left: 3px solid #f59e0b;
+}
+.news-item .news-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.news-item .news-title .tag {
+  display: inline-block;
+  background: rgba(245,158,11,0.2);
+  color: #fbbf24;
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.news-item .news-desc {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.65;
+}
+.footer {
+  text-align: center;
+  padding: 20px 0 10px;
+  border-top: 1px solid rgba(226,232,240,0.08);
+  color: #475569;
+  font-size: 0.75rem;
+}
+.footer a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+@media (max-width: 600px) {
+  .container { padding: 14px 12px 30px; }
+  .header h1 { font-size: 1.3rem; }
+  .section-title { font-size: 1.05rem; }
+  .news-item { padding: 12px 14px; }
+  .news-item .news-title { font-size: 0.9rem; }
+  .news-item .news-desc { font-size: 0.82rem; }
+}
 </style>
 </head>
 <body>
-
 <div class="container">
-
   <div class="header">
-    <div class="emoji">🌍</div>
-    <h1>每日全球热点新闻</h1>
+    <h1>📰 每日全球热点新闻</h1>
     <div class="date">2026年5月2日 星期六</div>
-    <div class="summary">共 23 条热点新闻 · 数据截止 07:00</div>
+    <div class="update-time">更新于 08:49</div>
   </div>
 
   <!-- 国际政治与外交 -->
-  <div class="category cat-politics">
-    <div class="category-title">
-      <span class="icon">🏛️</span>
-      国际政治与外交
+  <div class="section">
+    <div class="section-title politics">🌍 国际政治与外交</div>
+
+    <div class="news-item highlight">
+      <div class="news-title"><span class="tag">要闻</span>白宫宣布对伊朗"敌对行动结束"，福特号航母撤离中东</div>
+      <div class="news-desc">白宫正式致函国会称美伊敌对行动已"结束"，"福特"号航母已驶离中东。但特朗普对伊最新谈判方案表示"不满意"，称选项包括"彻底打击"或"达成协议"。伊朗总统表示对美"完全失去信任"，最高领袖呼吁推动"经济抗争"。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-red">重要</span>
-      <h3><span class="news-num">1</span>白宫称与伊朗敌对行动已"结束"，特朗普仍不满意伊方方案</h3>
-      <p>特朗普政府致函国会称美伊敌对行动已"结束"，但对伊朗最新谈判方案表示"不满意"，给出"彻底打击"或"达成协议"两个选项。</p>
+      <div class="news-title">中国担任安理会5月轮值主席，聚焦三项重点</div>
+      <div class="news-desc">中国5月1日起担任安理会轮值主席，宣布三项重点：重振《联合国宪章》权威、推动中东问题政治解决、支持非洲国家稳定发展。中方敦促以色列遵守加沙停火协议。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-red">重要</span>
-      <h3><span class="news-num">2</span>中国担任联合国安理会5月轮值主席，聚焦三项重点</h3>
-      <p>中国5月1日起担任安理会当月轮值主席，聚焦：重振《联合国宪章》权威、推动中东问题政治解决、支持非洲国家稳定发展。</p>
+      <div class="news-title">特朗普宣布下周对欧盟汽车加征25%关税</div>
+      <div class="news-desc">以欧盟未履行贸易协议为由，下周起对欧盟进口汽车和卡车加征25%关税，在美设厂企业可豁免。欧盟此前已拒绝美方金属关税争端解决方案。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">3</span>特朗普宣布下周对欧盟输美汽车加征25%关税</h3>
-      <p>以欧盟未履行贸易协议为由，宣布对欧盟汽车加征25%关税，在美本土设厂可免征。欧盟回应"不可接受"，欧洲汽车巨头股价跳水。</p>
+      <div class="news-title">以色列袭击黎巴嫩致13死30伤，联合国警告中东危机阻碍全球援助</div>
+      <div class="news-desc">以色列对黎巴嫩袭击造成至少13死30伤。联合国难民署警告中东危机已严重阻碍全球人道主义援助。也门油轮遭武装劫持，阿富汗喀布尔发生爆炸。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">4</span>美军将撤出5000名驻德人员</h3>
-      <p>特朗普宣布从德国撤军5000人，并点名西班牙、意大利"未通过考验"，美欧安全关系面临新紧张。</p>
-    </div>
-
-    <div class="news-item">
-      <span class="tag tag-yellow">动态</span>
-      <h3><span class="news-num">5</span>日本对美投资承诺大幅缩水，缩水近94%</h3>
-      <p>日本首批对美贷款项目总额仅约22亿美元，远低于美国预期的360亿美元，美日贸易协议前景存疑。</p>
+      <div class="news-title">WEF发布中美关系展望，聚焦5大合作领域</div>
+      <div class="news-desc">世界经济论坛5月1日发文探讨美中关系前景，提出双方在气候变化、公共卫生、金融稳定等5个领域存在合作空间。</div>
     </div>
   </div>
 
   <!-- 全球经济与市场 -->
-  <div class="category cat-economy">
-    <div class="category-title">
-      <span class="icon">📊</span>
-      全球经济与市场
+  <div class="section">
+    <div class="section-title economy">💰 全球经济与市场</div>
+
+    <div class="news-item highlight">
+      <div class="news-title"><span class="tag">要闻</span>美股4月创2000年以来最大月涨幅，标普与纳指齐创新高</div>
+      <div class="news-desc">标普500指数与纳指创历史新高。4月三大股指：道指涨7.14%、纳指涨15.29%、标普涨10.42%。谷歌云业务超预期提振大盘，微软和Meta因上调AI支出遭抛售，英伟达市值回落至5万亿下方。中概股普涨，贝壳涨7%。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-red">重要</span>
-      <h3><span class="news-num">6</span>美股创历史新高，纳指与标普500齐创新高</h3>
-      <p>5月1日美股收高，标普500指数创下2000年以来最大月度涨幅。美股总市值突破75万亿美元创历史新高。</p>
+      <div class="news-title">布伦特原油从四年高位回落至约114美元</div>
+      <div class="news-desc">布伦特原油6月合约结算价约114美元，跌3%；WTI跌2%至约110美元。此前曾突破126美元创俄乌冲突后最高。回落主因交易商满仓多头后买入能力耗尽及霍尔木兹海峡通航担忧缓解。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-red">重要</span>
-      <h3><span class="news-num">7</span>苹果Q2财报超预期，批准1000亿美元股票回购</h3>
-      <p>苹果Q2营收1111.8亿美元超预期，服务业务拉动增长。批准1000亿美元股票回购，库克即将卸任。</p>
+      <div class="news-title">欧洲央行释放6月加息信号，英国央行面临"最棘手"困境</div>
+      <div class="news-desc">欧洲央行维持利率不变，拉加德暗示6月可能加息以应对能源价格飙升。英国央行维持3.75%不变，但警告能源危机持续将带来组合困境。欧洲斯托克600指数4月累涨4.8%。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-red">重要</span>
-      <h3><span class="news-num">8</span>国际油价刷新4年新高，布伦特突破126美元/桶</h3>
-      <p>受美以伊冲突持续影响，布伦特即期价格突破126美元/桶。全球滞胀与衰退风险加剧。</p>
+      <div class="news-title">IMF最新展望：全球增长放缓，通胀压力再起</div>
+      <div class="news-desc">IMF发布4月《世界经济展望》指出全球经济正在放缓，同时通胀压力再度抬头，呼吁各国政策保持灵活。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">9</span>五粮液业绩大变脸，营收净利双降</h3>
-      <p>五粮液2025年营收净利润双降，重述前三季度财报致营收缩水约303亿元，公司称"会计差错更正"引发质疑。</p>
-    </div>
-
-    <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">10</span>黄金价格跌破4600美元/盎司，各国央行态度分化</h3>
-      <p>受地缘局势和美联储影响，国际金价跌破4600美元。土耳其增持、阿塞拜疆减持，短期宽幅震荡。</p>
-    </div>
-
-    <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">11</span>易会满被"双开"，金融反腐持续推进</h3>
-      <p>中央纪委国家监委给予原证监会主席易会满开除党籍、开除公职处分，通报指出其推进注册制改革措施不完善等问题。</p>
-    </div>
-
-    <div class="news-item">
-      <span class="tag tag-yellow">动态</span>
-      <h3><span class="news-num">12</span>外资券商业绩分化加剧，头部爆发尾部亏损</h3>
-      <p>高盛（中国）证券等4家头部外资券商业绩爆发，净利润两至六倍增长，但部分外资券商仍亏损近亿元。</p>
+      <div class="news-title">美审议通过检测认证和电信领域对华限制措施</div>
+      <div class="news-desc">美国FCC拟取消未签署"互认协议"国家检测认证机构资质，禁止"覆盖清单"实体在美开展电信业务，中国商务部已作出回应。</div>
     </div>
   </div>
 
   <!-- 科技与创新 -->
-  <div class="category cat-tech">
-    <div class="category-title">
-      <span class="icon">🔬</span>
-      科技与创新
+  <div class="section">
+    <div class="section-title tech">🤖 科技与创新</div>
+
+    <div class="news-item highlight">
+      <div class="news-title"><span class="tag">要闻</span>OpenAI发布GPT-5.5 Cyber网络安全模型</div>
+      <div class="news-desc">OpenAI推出专门用于网络安全测试的GPT-5.5 Cyber，目前仅限"关键网络防御者"访问。同时与Yubico合作推出ChatGPT硬件安全密钥保护措施。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-red">重要</span>
-      <h3><span class="news-num">13</span>习近平出席加强基础研究座谈会，四方面作出战略部署</h3>
-      <p>习近平强调基础研究是科学体系"源头"，提出优布局、聚人才、强保障、促合作四大方向，锚定2035年科技强国目标。</p>
+      <div class="news-title">Anthropic寻求超900亿美元估值，AI融资热潮持续</div>
+      <div class="news-desc">Anthropic要求投资者48小时内提交资金承诺，预计两周内完成新一轮巨额融资，估值将超900亿美元。法律AI初创Legora估值达56亿美元。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">14</span>国产AI芯片龙头集体迎来业绩兑现</h3>
-      <p>国产AI芯片企业销售规模全线高增，摩尔线程完成DeepSeek-V4全链路工程化适配，国产替代加速推进。</p>
+      <div class="news-title">微软开源VibeVoice语音AI，Google Gemini进入数百万辆汽车</div>
+      <div class="news-desc">微软发布前沿级语音AI技术VibeVoice并完全开源。Google将Gemini AI助手大规模集成到汽车中，推动驾驶体验向高级对话式AI转变。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">15</span>杭州为具身智能机器人立法，今日起施行</h3>
-      <p>杭州率先为具身智能机器人立法，推动机器人产业发展，"小黄鸭"机器人已在铁路投入实战应用。</p>
+      <div class="news-title">马斯克法庭承认xAI使用OpenAI模型训练Grok</div>
+      <div class="news-desc">马斯克诉Altman案4月30日开庭，马斯克在法庭确认xAI的Grok训练使用了OpenAI模型，将"模型蒸馏"行业潜规则暴露于众。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">16</span>存储芯片"超级周期"或延续至2027年</h3>
-      <p>受AI CPU推动DDR5需求急剧膨胀，DRAM市场存在约10%供给缺口，存储超级周期终点推迟至2027年。</p>
+      <div class="news-title">NVIDIA OpenClaw突破10万GitHub Stars，Apple Mac因AI需求持续缺货</div>
+      <div class="news-desc">NVIDIA旗下OpenClaw开源项目GitHub Stars突破10万，反映Agent技术广泛采用。Apple确认Mac mini/Studio/Neo因AI需求激增在整个下季度持续缺货。</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">世界银行发布《2026年世界发展报告》：AI促进发展</div>
+      <div class="news-desc">报告探讨AI作为通用技术对发展中国家的影响：跨越发展鸿沟、解决市场失灵的潜力，以及加剧不平等、就业冲击、垄断依赖等风险。</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">⚠️ PyTorch Lightning爆出恶意软件，开发者需紧急排查</div>
+      <div class="news-desc">PyPI上lightning包2.6.2和2.6.3版本发现名为"Shai-Hulud"的恶意代码，导入时窃取用户凭据，使用该库的开发者需立即排查。</div>
     </div>
   </div>
 
   <!-- 社会与文化 -->
-  <div class="category cat-society">
-    <div class="category-title">
-      <span class="icon">🎭</span>
-      社会与文化
+  <div class="section">
+    <div class="section-title society">🏛️ 社会与文化</div>
+
+    <div class="news-item highlight">
+      <div class="news-title"><span class="tag">要闻</span>五一假期首日铁路发送旅客创历史新高，5月2日预计流动超3亿人次</div>
+      <div class="news-desc">五一首日全国铁路发送旅客2484.4万人次创历史新高。5月2日预计全社会跨区域流动量约3亿人次。北京各市属公园首日接待游客超50万人次。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">17</span>"五一"假期第二日全社会跨区域流动超3亿人次</h3>
-      <p>5月2日预计全社会跨区域人员流动量30036万人次，同比增长2.6%。多地景区达最大承载量，陆续限流停票。</p>
+      <div class="news-title">全球多地五一劳动节大规模游行抗议</div>
+      <div class="news-desc">从首尔到雅加达，全球多国工人联盟在五一劳动节集会，围绕工资、养老金、不平等等议题展开游行。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-green">体育</span>
-      <h3><span class="news-num">18</span>中国跳水队包揽世界杯总决赛首日5金</h3>
-      <p>2026年跳水世界杯总决赛在京开赛，中国队包揽男子双人3米板、女子双人3米板等全部5个项目金牌。</p>
+      <div class="news-title">成都市区车祸致1死11伤，南开大学启动论文数据调查</div>
+      <div class="news-desc">成都市区严重车祸致1死11伤，肇事司机已被抓获。南开大学就教师陈某论文数据存疑成立调查组，对违背科研诚信"零容忍"。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-yellow">动态</span>
-      <h3><span class="news-num">19</span>成都发生车祸致1死11伤，肇事司机被抓获</h3>
-      <p>成都市区发生严重车祸导致1人死亡、11人受伤，肇事司机已被警方控制。</p>
-    </div>
-
-    <div class="news-item">
-      <span class="tag tag-yellow">动态</span>
-      <h3><span class="news-num">20</span>胖东来起诉博主"惊梦人"引发舆论关注</h3>
-      <p>胖东来发布声明称已起诉相关博主，引发网络舆论热议。</p>
+      <div class="news-title">古巴谴责美国新一轮制裁为"种族灭绝式封锁"</div>
+      <div class="news-desc">美国5月1日宣布对古巴实施新一轮强制性制裁，古巴国家主席发表声明予以强烈谴责。</div>
     </div>
   </div>
 
   <!-- 中国国内重要新闻 -->
-  <div class="category cat-china">
-    <div class="category-title">
-      <span class="icon">🇨🇳</span>
-      中国国内重要新闻
+  <div class="section">
+    <div class="section-title china">🇨🇳 中国国内重要新闻</div>
+
+    <div class="news-item highlight">
+      <div class="news-title"><span class="tag">要闻</span>中国对53个非洲建交国全面实施零关税今日生效</div>
+      <div class="news-desc">自5月1日起，中国对53个非洲建交国全面实施零关税举措正式生效。这是全球首个主要经济体实现对非洲建交国零关税全覆盖，为2024年中非合作论坛承诺的落地。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-red">重要</span>
-      <h3><span class="news-num">21</span>多地密集加码楼市新政，深圳广州市场反应积极</h3>
-      <p>深圳、广州密集发布房地产优化政策，广州率先提出"卖旧买新"房贷补贴（单套最高3万元），部分项目连夜成交。</p>
+      <div class="news-title">中国跳水队包揽世界杯总决赛首日全部5金</div>
+      <div class="news-desc">2026年世界泳联跳水世界杯总决赛在京开赛，首日包揽男双3米板、女双3米板、女双10米台、男双10米台和混合团体5金。陈芋汐/卢为夺得女双10米台冠军。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-orange">关注</span>
-      <h3><span class="news-num">22</span>人民日报评论员：以更大力度更实举措加强基础研究</h3>
-      <p>人民日报发表评论员文章，学习贯彻习近平加强基础研究座谈会讲话精神，强调抓住机遇夯实科技强国根基。</p>
+      <div class="news-title">李强在广西调研强调加快推进水网建设</div>
+      <div class="news-desc">国务院总理李强在广西调研时强调，要加快推进水网建设，全面提升综合效益，为经济社会发展提供基础支撑和保障。</div>
     </div>
 
     <div class="news-item">
-      <span class="tag tag-yellow">动态</span>
-      <h3><span class="news-num">23</span>"五一"档票房破2亿，多部电影宣布退出</h3>
-      <p>"五一"假期电影市场竞争激烈，档期票房突破2亿元，但多部影片表现不佳宣布退出档期。</p>
+      <div class="news-title">浙江松阳抽水蓄能电站最深竖井贯通，刷新全国纪录</div>
+      <div class="news-desc">国家"十四五"重点能源项目——浙江松阳抽水蓄能电站两条637米深竖井全线贯通，刷新我国抽水蓄能领域最深竖井工程纪录。</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-title">全国高速ETC改革：车牌识别免卡通行试点推广</div>
+      <div class="news-desc">多地推进高速通行方式改革，江苏高速茉莉畅行平台注册人数达65万，日均通行量突破2万，车道通行效率显著提升。</div>
     </div>
   </div>
 
   <div class="footer">
-    <p>📡 数据来源：新浪财经、央视新闻、澎湃新闻、新华社等公开信息</p>
-    <p style="margin-top:4px;">⚠️ 本内容基于公开信息整理，仅供参考，不构成投资建议</p>
-    <p style="margin-top:8px;">Rich Dashboard · 每日自动更新</p>
+    数据来源：新浪财经、央视网、新华网、中新网、AIToolly、世界银行、IMF等综合整理<br>
+    Rich Dashboard · 自动生成
   </div>
-
 </div>
-
 </body>
 </html>
